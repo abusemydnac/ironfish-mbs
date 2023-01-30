@@ -181,28 +181,28 @@ function MainFunc() {
 
     if [[ ${MAIL} != "" ]]; then
         FaucetRequestFunc "${MAIL}"
-    else
-        FaucetRequestFunc
-    fi
-
-    if [ $(echo "$(GetBalanceFunc) > 0.00000003" | bc ) -eq 1 ]; then
-        TryUntilSuccessLocalFunc "MintFunc"
-        if [[ ${START_FROM_ZERO} == "false" ]]; then
-            TryUntilSuccessLocalFunc "BurnFunc"
-        fi
-        if [[ ${START_FROM_ZERO} == "false" ]]; then
-            TryUntilSuccessLocalFunc "SendFunc"
-        fi
-        if [[ ${START_FROM_ZERO} == "false" ]]; then
-            echo -e "assetId: ${IDENTIFIER}.\n"
-        fi
-
-        echo -e "balance of \$IRON: $(GetBalanceFunc)."
-        echo -e "balance of \$${GRAFFITI}: $(GetBalanceFunc "${IDENTIFIER}").\n"
-        echo -e "with love by @cyberomanov."
-    else
-        echo -e "$(PrintTime) not enough balance. minimum required: \$IRON 0.00000003, but you have only: \$IRON $(GetBalanceFunc). if it's a bug, try in a few minutes.\n"
         
+    else
+         
+        if [ $(echo "$(GetBalanceFunc) > 0.00000003" | bc ) -eq 1 ]; then
+            TryUntilSuccessLocalFunc "MintFunc"
+            if [[ ${START_FROM_ZERO} == "false" ]]; then
+                TryUntilSuccessLocalFunc "BurnFunc"
+            fi
+            if [[ ${START_FROM_ZERO} == "false" ]]; then
+                TryUntilSuccessLocalFunc "SendFunc"
+            fi
+            if [[ ${START_FROM_ZERO} == "false" ]]; then
+                echo -e "assetId: ${IDENTIFIER}.\n"
+            fi
+
+            echo -e "balance of \$IRON: $(GetBalanceFunc)."
+            echo -e "balance of \$${GRAFFITI}: $(GetBalanceFunc "${IDENTIFIER}").\n"
+            echo -e "with love by @cyberomanov."
+        else
+            echo -e "$(PrintTime) not enough balance. minimum required: \$IRON 0.00000003, but you have only: \$IRON $(GetBalanceFunc). if it's a bug, try in a few minutes.\n"
+
+        fi
     fi
 
 }
