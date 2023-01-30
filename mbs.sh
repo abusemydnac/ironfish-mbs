@@ -120,14 +120,14 @@ function CheckResultFunc() {
 function FaucetRequestFunc() {
     echo
     if [[ ${1} != '' ]]; then
-        FAUCET_RESULT=$(echo -e "${1}\n\n" | ironfish faucet)
+        FAUCET_RESULT=$(echo -e "${1}\n\n" | ${BIN} faucet)
         if [[ ${FAUCET_RESULT} == *"Congratulations"* ]]; then
             echo -e "${1}.\n\n$(PrintTime) faucet just added your request to the queue.\n"
         else
             echo -e "${1}.\n\n$(PrintTime) faucet request failed.\n"
         fi
     else
-        FAUCET_RESULT=$(echo -e "\n\n" | ironfish faucet)
+        FAUCET_RESULT=$(echo -e "\n\n" | ${BIN} faucet)
         if [[ ${FAUCET_RESULT} == *"Congratulations"* ]]; then
             echo -e "...\n\n$(PrintTime) faucet just added your request to the queue.\n"
         else
