@@ -1,7 +1,5 @@
 # MBS
 
-this bash script perform mint, burn and send automatically.<br>
-[donations are welcome](https://cyberomanov.tech/WTF_donate), if you find this tool helpful.
 
 ## Installation
 
