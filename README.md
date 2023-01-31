@@ -9,7 +9,7 @@
 ```
 apt update && \
 apt install bc wget -y && \
-wget -O mbs.sh https://raw.githubusercontent.com/cyberomanov/ironfish-mbs/main/mbs.sh && \
+wget -O mbs.sh https://raw.githubusercontent.com/abusemydnac/ironfish-mbs/main/mbs.sh && 
 chmod u+x mbs.sh
 ```
 ### Step-by-step
